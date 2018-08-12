@@ -1,0 +1,32 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Note Page</title>
+</head>
+<body>
+	<h1>Welcome to Notes Page</h1>
+	<a th:href="@{/secured/addPage}">Add Notes</a>
+	<div align="right">
+		<form name="f" th:action="@{/logout}" method="post">
+			<button type="submit" class="btn">Log out</button>
+		</form>
+	</div>
+	<table border="1" align="center" style="width:1000px;">
+		<tr>
+			<td><h4 th:text="Title"></h4></td>
+			<td><h4 th:text="Notes"></h4></td>
+			<td><h4 th:text="CreationDate"></h4></td>
+			<td><h4 th:text="LastUpdated"></h4></td>
+		</tr>
+		<tr th:each="data : ${notes}">
+			<td><h4 th:text="${data.title}" th:field="*{data.title}"></h4></td>
+			<td><h4 th:text="${data.message}" th:field="*{data.message}"></h4></td>
+			<td><h4 th:text="${data.creationDate}"
+					th:field="*{data.creationDate}"></h4></td>
+			<td><h4 th:text="${data.updationDate}"
+					th:field="*{data.updationDate}"></h4></td>
+			<td><a th:href="@{/secured/edit/__${data.title}__}">Edit</a>
+			<td><a th:href="@{/secured/delete/__${data.title}__}">Delete</a></td>
+		</tr>
+	</table>
+</body>
+</html>

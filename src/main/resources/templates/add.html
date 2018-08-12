@@ -1,0 +1,22 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Add Notes</title>
+</head>
+<body>
+<script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
+	<h1 align ="center">Add Notes</h1>
+	<form action="#" th:action="@{/secured/add/note}" th:object="${notes}" method="post">
+	<table align="center"><tr><td>
+    	<p>Title: </td><td><input type="text" th:field="*{title}"/></p></td></tr>
+    	<tr><td>
+        <p>Message:</td><td> 
+         <textarea type="text" th:field="*{message}"  name="text" id="text"/><script> CKEDITOR.replace( 'text' );</script>
+         </p></td></tr>
+        <tr><td>
+        <p><input type="submit" value="Submit" /> </p>
+        </td>
+        <td><a th:href="@{/secured/notes}">Home</a>
+        </td></tr></table>
+    </form>
+</body>
+</html>
